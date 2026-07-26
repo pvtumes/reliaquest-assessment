@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.challenge.api.dto.CreateEmployeeRequest;
 import com.challenge.api.model.Employee;
+import com.challenge.api.repository.EmployeeRepositoryImpl;
 import com.challenge.api.service.EmployeeServiceImpl;
 import java.util.List;
 import java.util.UUID;
@@ -14,7 +15,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 public class EmployeeControllerTest {
 
-    private final EmployeeController controller = new EmployeeController(new EmployeeServiceImpl());
+    private final EmployeeController controller =
+            new EmployeeController(new EmployeeServiceImpl(new EmployeeRepositoryImpl()));
 
     @Test
     public void testGetAllEmployees() {
